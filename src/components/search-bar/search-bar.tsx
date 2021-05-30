@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Ingredient from '../ingredient/ingredient';
 import INGREDIENTS from './INGREDIENTS.json';
 
 const SearchBar = () => {
@@ -14,19 +15,19 @@ const SearchBar = () => {
         placeholder='Add a new ingredient'
         onChange={onChange}
       />
-      {INGREDIENTS.filter((ingredient) => {
-        if (searchTerm === '') {
-          return false;
-        } else if (ingredient.query.includes(searchTerm.toLocaleLowerCase())) {
-          return ingredient;
-        }
-      }).map((ingredient) => {
-        return (
-          <div>
-            <p>{ingredient.query}</p>
-          </div>
-        );
-      })}
+      <ul>
+        {INGREDIENTS.filter((ingredient) => {
+          if (searchTerm === '') {
+            return false;
+          } else if (
+            ingredient.query.includes(searchTerm.toLocaleLowerCase())
+          ) {
+            return ingredient;
+          }
+        }).map((ingredient) => {
+          return <Ingredient key={ingredient.id} query={ingredient.query} />;
+        })}
+      </ul>
     </div>
   );
 };
