@@ -3,17 +3,23 @@ import './app.css';
 import ListAtHand from './components/list-at-hand/list-at-hand';
 import SearchBar from './components/search-bar/search-bar';
 
-type Ingredient = { query: string; id: number };
-// type PreShopping = { id: string; ingredient: Ingredient };
-type PreShopping = { [id: number]: Ingredient };
-
 function App() {
-  // const [ingredients, setIngredients] = useState<PreShopping>({id: '1', {}});
-  const [ingredients, setIngredients] = useState<PreShopping>({});
+  const [preItems, setPreItems] = useState<Ingredients>();
+
+  const addItem: addItem = (ingredient: Ingredient) => {
+    setPreItems((prevState) => {
+      const newState = { ...prevState, [ingredient.id]: ingredient };
+      return newState;
+    });
+  };
 
   return (
     <div className='app'>
-      <SearchBar />
+      <h1>Up</h1>
+      {preItems &&
+        Object.keys(preItems).map((id) => <h2>{preItems[id].query}</h2>)}
+      <h1>Down</h1>
+      <SearchBar addItem={addItem} />
       <ListAtHand />
     </div>
   );

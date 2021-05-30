@@ -1,12 +1,16 @@
 // import styles from 'item.module.css'
 import React from 'react';
 
-type Props = { ingredient: Ingredient };
+type Props = { ingredient: Ingredient; addItem: addItem };
 
-const Item: React.FC<Props> = ({ ingredient }) => {
+const Item: React.FC<Props> = ({ ingredient, addItem }) => {
+  const onClick = () => {
+    addItem(ingredient);
+  };
+
   return (
     <li>
-      <button>{ingredient.query}</button>
+      <button onClick={onClick}>{ingredient.query}</button>
     </li>
   );
 };

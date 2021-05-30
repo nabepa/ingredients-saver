@@ -1,11 +1,11 @@
 // import styles from './search-bar.module.css';
 import React, { useState } from 'react';
 import Item from '../item/item';
-import INGREDIENTS from './INGREDIENTS.json';
+import INGREDIENTS from '../../common/INGREDIENTS.json';
 
-type Props = {};
+type Props = { addItem: addItem };
 
-const SearchBar: React.FC<Props> = () => {
+const SearchBar: React.FC<Props> = ({ addItem }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchTerm(event.target.value.trim());
@@ -28,7 +28,13 @@ const SearchBar: React.FC<Props> = () => {
             return ingredient;
           }
         }).map((ingredient) => {
-          return <Item key={ingredient.id} ingredient={ingredient} />;
+          return (
+            <Item
+              key={ingredient.id}
+              ingredient={ingredient}
+              addItem={addItem}
+            />
+          );
         })}
       </ul>
     </div>
