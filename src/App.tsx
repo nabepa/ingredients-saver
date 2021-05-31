@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import UserItems from './components/user-items/user-items';
 import SearchBar from './components/search-bar/search-bar';
 import Spoonacular from './service/spoonacular';
+import RecipeCard from './components/recipe-card/recipe-card';
 
 type Props = {
   spoonacular: Spoonacular;
@@ -60,9 +61,10 @@ function App({ spoonacular }: Props): React.ReactElement {
         selectedItemIds={selectedItemIds}
         selectItem={selectItem}
       />
-      <button onClick={searchMenu}>api test</button>
+      <button onClick={searchMenu}>Search Recipe</button>
       {recipes.map((recipe) => (
-        <img src={recipe.image} alt={recipe.title} />
+        <RecipeCard key={recipe.id} recipe={recipe} />
+        // <img src={recipe.image} alt={recipe.title} />
       ))}
     </div>
   );

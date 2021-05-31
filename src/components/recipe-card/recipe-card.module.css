@@ -1,0 +1,12 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .title {
+} */
+
+.image {
+  width: 150px;
+  height: 150px;
+}
