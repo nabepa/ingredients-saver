@@ -10,7 +10,7 @@ const Item: React.FC<Props> = ({ ingredient, addItem }) => {
 
   return (
     <li>
-      <button onClick={onClick}>{ingredient.query}</button>
+      <button onClick={onClick}>{ingredient.name}</button>
     </li>
   );
 };

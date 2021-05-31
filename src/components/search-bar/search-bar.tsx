@@ -22,9 +22,7 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
         {INGREDIENTS.filter((ingredient: Ingredient) => {
           if (searchTerm === '') {
             return false;
-          } else if (
-            ingredient.query.includes(searchTerm.toLocaleLowerCase())
-          ) {
+          } else if (ingredient.name.includes(searchTerm.toLocaleLowerCase())) {
             return ingredient;
           }
         }).map((ingredient) => {
