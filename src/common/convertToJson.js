@@ -6,7 +6,7 @@ const rows = csv.toString().split('\n');
 const result = [];
 for (let row of rows) {
   data = row.split(';');
-  element = { id: data[1], query: data[0] };
+  element = { id: data[1], name: data[0] };
   result.push(element);
 }
 
