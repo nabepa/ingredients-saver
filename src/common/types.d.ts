@@ -17,4 +17,5 @@ type Recipe = {
   unusedIngredients: Ingredient[];
 };
 
-type addItem = (ingredient: Ingredient) => void;
+type AddItem = (item: Ingredient) => void;
+type HanddleClickItem = (item: Ingredient) => void;
