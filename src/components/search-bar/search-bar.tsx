@@ -19,13 +19,15 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
   };
 
   useEffect(() => {
-    const newFiltered: Ingredient[] = searchTerm
-      ? INGREDIENTS.filter((ingredient: Ingredient) => {
-          if (ingredient.name.includes(searchTerm.toLocaleLowerCase())) {
-            return ingredient;
-          }
-        })
-      : [];
+    const newFiltered: Ingredient[] = INGREDIENTS.filter(
+      (ingredient: Ingredient) => {
+        if (searchTerm === '') {
+          return false;
+        } else if (ingredient.name.includes(searchTerm.toLocaleLowerCase())) {
+          return ingredient;
+        }
+      }
+    );
 
     setFiltered(newFiltered);
   }, [searchTerm]);
