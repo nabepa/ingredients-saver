@@ -37,10 +37,16 @@ function App({ spoonacular }: Props): React.ReactElement {
 
   const searchMenu = () => {
     if (preItems == null) {
+      // alert
       return;
     }
+    const selectedItems: Ingredients = {};
+    selectedItemIds.forEach((key) => {
+      selectedItems[key] = preItems[key];
+    });
+
     spoonacular
-      .getRecipesByIngredients(preItems) //
+      .getRecipesByIngredients(selectedItems) //
       .then((response) => {
         setRecipes(response);
       });
