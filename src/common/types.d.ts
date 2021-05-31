@@ -17,6 +17,14 @@ type Recipe = {
   unusedIngredients: Ingredient[];
 };
 
+type ItemState =
+  | 'Filtered'
+  | 'Added'
+  | 'Selected'
+  | 'Used'
+  | 'Unused'
+  | 'Missed';
+
 type AddItem = (item: Ingredient) => void;
 type SelectItem = (item: Ingredient) => void;
 type HanddleClickItem = (item: Ingredient) => void;

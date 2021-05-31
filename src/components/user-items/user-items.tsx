@@ -22,7 +22,7 @@ const UserItems: React.FC<Props> = ({
         <Item
           key={id}
           item={preItems[id]}
-          bSelected={selectedItemIds.has(id)}
+          itemState={selectedItemIds.has(id) ? 'Selected' : 'Added'}
           handdleClick={handdleClick}
         />
       ))}

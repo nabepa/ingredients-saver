@@ -10,15 +10,15 @@ const RecipeCard: React.FC<Props> = ({ recipe }) => (
     <img className={styles.image} src={recipe.image} alt={recipe.title} />
     <h3>Used</h3>
     {recipe.usedIngredients.map((item: Ingredient) => (
-      <Item key={item.id} item={item} />
+      <Item key={item.id} item={item} itemState={'Used'} />
     ))}
     <h3>Unused</h3>
     {recipe.unusedIngredients.map((item: Ingredient) => (
-      <Item key={item.id} item={item} />
+      <Item key={item.id} item={item} itemState={'Unused'} />
     ))}
     <h3>Missed</h3>
     {recipe.missedIngredients.map((item: Ingredient) => (
-      <Item key={item.id} item={item} />
+      <Item key={item.id} item={item} itemState={'Missed'} />
     ))}
   </div>
 );

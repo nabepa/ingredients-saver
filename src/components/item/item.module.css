@@ -1,7 +1,23 @@
 .li {
-  background-color: yellowgreen;
+  color: black;
+  font-weight: 900;
 }
 
+.li.filtered {
+  color: red;
+}
+.li.added {
+  color: orange;
+}
 .li.selected {
-  background-color: teal;
+  color: #fbdf03;
+}
+.li.used {
+  color: green;
+}
+.li.unused {
+  color: blue;
+}
+.li.missed {
+  color: purple;
 }

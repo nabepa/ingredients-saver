@@ -4,19 +4,18 @@ import React from 'react';
 type Props = {
   key: string | number;
   item: Ingredient;
-  // bAdd?: boolean;
-  bSelected?: boolean;
+  itemState?: ItemState;
   handdleClick?: HanddleClickItem;
 };
 
-const Item: React.FC<Props> = ({ item, bSelected, handdleClick }) => {
+const Item: React.FC<Props> = ({ item, itemState, handdleClick }) => {
   const onClick = () => {
     handdleClick && handdleClick(item);
   };
 
   return (
     <li
-      className={`${styles.li} ${bSelected && getStyles(bSelected)}`}
+      className={`${styles.li} ${itemState && getStyles(itemState)}`}
       onClick={onClick}
     >
       {item.name}
@@ -24,9 +23,22 @@ const Item: React.FC<Props> = ({ item, bSelected, handdleClick }) => {
   );
 };
 
-function getStyles(bSelected: boolean) {
-  if (bSelected) {
-    return styles.selected;
+function getStyles(itemState:ItemState) {
+  switch(itemState) {
+    case 'Filtered':
+      return styles.filtered;
+    case 'Added':
+        return styles.added;
+    case 'Selected':
+      return styles.selected;
+    case 'Used':
+      return styles.used;
+    case 'Unused':
+      return styles.unused;
+    case 'Missed':
+      return styles.missed;
+    default:
+      throw new Error(`unknown itemState: ${itemState}`);
   }
 }
 
