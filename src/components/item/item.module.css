@@ -1,0 +1,7 @@
+.li {
+  background-color: yellowgreen;
+}
+
+.li.selected {
+  background-color: teal;
+}

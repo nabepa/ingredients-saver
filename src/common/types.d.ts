@@ -18,4 +18,5 @@ type Recipe = {
 };
 
 type AddItem = (item: Ingredient) => void;
+type SelectItem = (item: Ingredient) => void;
 type HanddleClickItem = (item: Ingredient) => void;

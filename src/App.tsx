@@ -10,11 +10,27 @@ type Props = {
 
 function App({ spoonacular }: Props): React.ReactElement {
   const [preItems, setPreItems] = useState<Ingredients>({});
+  const [selectedItemIds, setSelectedItemIds] = useState(
+    new Set<IngredientId>()
+  );
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
-  const addItem: AddItem = (ingredient: Ingredient) => {
+  const addItem: AddItem = (item: Ingredient) => {
     setPreItems((prevState) => {
-      const newState = { ...prevState, [ingredient.id]: ingredient };
+      const newState = { ...prevState, [item.id]: item };
+      return newState;
+    });
+  };
+
+  const selectItem: SelectItem = (item: Ingredient) => {
+    setSelectedItemIds((prevState) => {
+      const newState = new Set<IngredientId>(prevState);
+      if (newState.has(item.id)) {
+        newState.delete(item.id);
+      } else {
+        newState.add(item.id);
+      }
+
       return newState;
     });
   };
@@ -32,12 +48,12 @@ function App({ spoonacular }: Props): React.ReactElement {
 
   return (
     <div className='app'>
-      {/* <h1>Up</h1>
-      {preItems &&
-        Object.keys(preItems).map((id) => <h2>{preItems[id].name}</h2>)}
-      <h1>Down</h1> */}
       <SearchBar addItem={addItem} />
-      <UserItems preItems={preItems} />
+      <UserItems
+        preItems={preItems}
+        selectedItemIds={selectedItemIds}
+        selectItem={selectItem}
+      />
       <button onClick={searchMenu}>api test</button>
       {recipes.map((recipe) => (
         <img src={recipe.image} alt={recipe.title} />
