@@ -34,16 +34,14 @@ const Item: React.FC<Props> = memo(
 
 function getStyles(itemState:ItemState) {
   switch(itemState) {
-    case 'Filtered':
-      return styles.filtered;
-    case 'Added':
-        return styles.added;
-    case 'Selected':
-      return styles.selected;
     case 'Used':
       return styles.used;
     case 'Unused':
       return styles.unused;
+    case 'Added':
+        return styles.added;
+    case 'Selected':
+      return styles.selected;
     case 'Missed':
       return styles.missed;
     default:
@@ -53,16 +51,13 @@ function getStyles(itemState:ItemState) {
 
 function getIcons(itemState:ItemState) {
   switch(itemState) {
-    // case 'Filtered':
-    //   return styles.filtered;
+    case 'Used':
+    case 'Unused':
+      return 'delete_outline';
     case 'Added':
-      return 'check';
+      return 'kitchen';
     case 'Selected':
-      return 'done_all';
-    // case 'Used':
-    //   return styles.used;
-    // case 'Unused':
-    //   return styles.unused;
+      return 'done';
     case 'Missed':
       return 'shopping_cart';
     default:

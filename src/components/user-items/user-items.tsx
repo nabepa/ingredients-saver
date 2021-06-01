@@ -22,7 +22,7 @@ const UserItems: React.FC<Props> = memo(
             <Item
               key={id}
               item={addedItems[id]}
-              itemState={selectedItemIds.has(id) ? 'Selected' : ''}
+              itemState={selectedItemIds.has(id) ? 'Used' : 'Unused'}
               handdleClick={handdleClick}
             />
           ))}

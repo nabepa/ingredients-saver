@@ -1,4 +1,4 @@
-@value makerGreen, makerDarkGreen from '../../common/colors.css';
+@value makerGreen, makerDarkGreen, makerYellow from '../../common/colors.css';
 @value fontMedium from '../../common/size.css';
 
 .li {
@@ -6,30 +6,30 @@
   align-items: center;
   font-size: fontMedium;
   font-weight: 700;
-  cursor: pointer;
   margin: 0.1em;
   color: makerGreen;
 }
 
-.li:hover {
+.li.used,
+.li.unused {
+  cursor: pointer;
+}
+
+.li.used {
   color: makerDarkGreen;
 }
-/* .li.filtered {
-  color: red;
-} */
-.li.added {
-  color: orange;
+
+.li.unused:hover {
+  color: makerDarkGreen;
 }
+
+.li.added,
 .li.selected {
   color: makerDarkGreen;
 }
-.li.used {
-  color: green;
-}
-.li.unused {
-  color: blue;
-}
+
 .li.missed {
+  color: makerYellow;
   order: 1;
 }
 
