@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import UserItems from './components/user-items/user-items';
 import SearchBar from './components/search-bar/search-bar';
 import Spoonacular from './service/spoonacular';
-import RecipeCard from './components/recipe-card/recipe-card';
+import Recipes from './components/recipes/recipes';
 
 type Props = {
   spoonacular: Spoonacular;
@@ -67,26 +67,45 @@ function App({ spoonacular }: Props): React.ReactElement {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <SearchBar addItem={addItem} />
+        <h1 className={styles.title}>Header</h1>
       </header>
-      <section className={styles.userItems}>
-        <UserItems
-          addedItems={addedItems}
-          selectedItemIds={selectedItemIds}
-          selectItem={selectItem}
-        />
-        <button onClick={searchRecipes}>Search Recipe</button>
-      </section>
-      <section className={styles.recipes}>
-        {recipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            recipe={recipe}
-            addedItemIds={new Set<IngredientId>(Object.keys(addedItems))}
-          />
-        ))}
-      </section>
-      <button onClick={searchRecipeInfo}>API Test</button>
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <section className={styles.searchBar}>
+            <SearchBar addItem={addItem} />
+          </section>
+          <section className={styles.userItems}>
+            <UserItems
+              addedItems={addedItems}
+              selectedItemIds={selectedItemIds}
+              selectItem={selectItem}
+            />
+          </section>
+          <button
+            className={`${styles.button} ${styles.searchButton}`}
+            onClick={searchRecipes}
+          >
+            Search Recipe
+          </button>
+        </div>
+        <div className={styles.container}>
+          <section className={styles.recipes}>
+            <Recipes
+              recipes={recipes}
+              addedItemIds={new Set<IngredientId>(Object.keys(addedItems))}
+            />
+          </section>
+          <button
+            className={`${styles.button} ${styles.infoButton}`}
+            onClick={searchRecipeInfo}
+          >
+            info
+          </button>
+        </div>
+      </main>
+      <footer className={styles.footer}>
+        <p className={styles.copyright}>Created by Nabepa. &copy; 2021</p>
+      </footer>
     </div>
   );
 }

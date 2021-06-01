@@ -24,6 +24,7 @@ type Recipe = {
   usedIngredients: Ingredient[];
   unusedIngredients: Ingredient[];
 };
+
 type RecipeInfo = {
   id: RecipeId;
   sourceUrl: string;

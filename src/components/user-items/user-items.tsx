@@ -1,3 +1,4 @@
+import styles from './user-items.module.css';
 import React from 'react';
 import Item from '../item/item';
 
@@ -17,7 +18,7 @@ const UserItems: React.FC<Props> = ({
   };
 
   return (
-    <ul>
+    <ul className={styles.list}>
       {Object.keys(addedItems).map((id) => (
         <Item
           key={id}

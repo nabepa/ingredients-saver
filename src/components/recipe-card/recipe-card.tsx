@@ -31,26 +31,18 @@ const RecipeCard: React.FC<Props> = ({ recipe, addedItemIds }) => {
     <div className={styles.card}>
       <h2 className={styles.title}>{recipe.title}</h2>
       <img className={styles.image} src={recipe.image} alt={recipe.title} />
-      {recipe.usedIngredients.map((item: Ingredient) => (
-        <Item key={item.id} item={item} itemState='Selected' />
-      ))}
-      {recipe.missedIngredients.map((item: Ingredient) => {
-        if (unselectedPreshopIds.has(item.id)) {
-          return <Item key={item.id} item={item} itemState='Added' />;
-        } else {
-          return <Item key={item.id} item={item} itemState='Missed' />;
-        }
-      })}
-
-      {/* {recipe.usedIngredients.map((item: Ingredient) => (
-        <Item key={item.id} item={item} itemState={'Used'} />
-      ))} */}
-      {/* {recipe.unusedIngredients.map((item: Ingredient) => (
-        <Item key={item.id} item={item} itemState={'Unused'} />
-      ))} */}
-      {/* {recipe.missedIngredients.map((item: Ingredient) => (
-        <Item key={item.id} item={item} itemState={'Missed'} />
-      ))} */}
+      <ul className={styles.ul}>
+        {recipe.usedIngredients.map((item: Ingredient) => (
+          <Item key={item.id} item={item} itemState='Selected' />
+        ))}
+        {recipe.missedIngredients.map((item: Ingredient) => {
+          if (unselectedPreshopIds.has(item.id)) {
+            return <Item key={item.id} item={item} itemState='Added' />;
+          } else {
+            return <Item key={item.id} item={item} itemState='Missed' />;
+          }
+        })}
+      </ul>
     </div>
   );
 };
