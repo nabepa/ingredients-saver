@@ -16,7 +16,7 @@ function App({ spoonacular }: Props): React.ReactElement {
     new Set<IngredientId>()
   );
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [recipeInfos, setRecipeInfos] = useState<RecipeInfo[]>([]);
+  // const [recipeInfos, setRecipeInfos] = useState<RecipeInfo[]>([]);
 
   const addItem: AddItem = useCallback((item: Ingredient) => {
     setAddedItems((prevState) => {
@@ -54,15 +54,15 @@ function App({ spoonacular }: Props): React.ReactElement {
       });
   };
 
-  const searchRecipeInfo = () => {
-    const recipeIds: RecipeId[] = recipes.map((recipe: Recipe) => recipe.id);
-    spoonacular
-      .getRecipesInformation(recipeIds) //
-      .then((response) => {
-        console.log(response);
-        setRecipeInfos(response);
-      });
-  };
+  // const searchRecipeInfo = () => {
+  //   const recipeIds: RecipeId[] = recipes.map((recipe: Recipe) => recipe.id);
+  //   spoonacular
+  //     .getRecipesInformation(recipeIds) //
+  //     .then((response) => {
+  //       console.log(response);
+  //       setRecipeInfos(response);
+  //     });
+  // };
 
   useEffect(() => {
     setAddedItemIds(new Set(Object.keys(addedItems)));
@@ -97,12 +97,12 @@ function App({ spoonacular }: Props): React.ReactElement {
           <section className={styles.recipes}>
             <Recipes recipes={recipes} addedItemIds={addedItemIds} />
           </section>
-          <button
+          {/* <button
             className={`${styles.button} ${styles.infoButton}`}
             onClick={searchRecipeInfo}
           >
             info
-          </button>
+          </button> */}
         </div>
       </main>
       <footer className={styles.footer}>
