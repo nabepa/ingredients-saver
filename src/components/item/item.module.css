@@ -1,11 +1,12 @@
 .li {
   color: black;
   font-weight: 900;
+  cursor: pointer;
 }
 
-.li.filtered {
+/* .li.filtered {
   color: red;
-}
+} */
 .li.added {
   color: orange;
 }

@@ -18,6 +18,7 @@ const Item: React.FC<Props> = ({ item, itemState, handdleClick }) => {
       className={`${styles.li} ${itemState && getStyles(itemState)}`}
       onClick={onClick}
     >
+      {item.id}
       {item.name}
     </li>
   );

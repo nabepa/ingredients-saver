@@ -3,8 +3,16 @@ type IngredientId = number | string;
 type Ingredient = { id: IngredientId; name: IngredientName; image?: string };
 type Ingredients = Record<IngredientId, Ingredient>;
 
-type RecipeId = number | string;
 type ImageType = 'png' | 'jpg';
+type ItemState =
+  | 'Filtered'
+  | 'Added'
+  | 'Selected'
+  | 'Used'
+  | 'Unused'
+  | 'Missed';
+
+type RecipeId = number | string;
 type Recipe = {
   id: RecipeId;
   title: string;
@@ -16,14 +24,10 @@ type Recipe = {
   usedIngredients: Ingredient[];
   unusedIngredients: Ingredient[];
 };
-
-type ItemState =
-  | 'Filtered'
-  | 'Added'
-  | 'Selected'
-  | 'Used'
-  | 'Unused'
-  | 'Missed';
+type RecipeInfo = {
+  id: RecipeId;
+  sourceUrl: string;
+};
 
 type AddItem = (item: Ingredient) => void;
 type SelectItem = (item: Ingredient) => void;

@@ -7,10 +7,10 @@ class Spoonacular {
     this.spoonacular = httpClient;
   }
 
-  async getRecipesByIngredients(preItems: Ingredients) {
+  async getRecipesByIngredients(items: Ingredients) {
     const response = await this.spoonacular.get('recipes/findByIngredients', {
       params: {
-        ingredients: this.makeIngredientsQuery(preItems),
+        ingredients: this.makeIngredientsQuery(items),
         number: 5,
         limitLicense: true,
         ranking: 1,
@@ -21,6 +21,20 @@ class Spoonacular {
     return response.data.map((recipe: Recipe) => ({
       ...recipe,
       id: recipe.id,
+    }));
+  }
+
+  async getRecipesInformation(recipeIds: RecipeId[]) {
+    const response = await this.spoonacular.get('recipes/informationBulk', {
+      params: {
+        ids: recipeIds.join(','),
+        includeNutrition: false,
+      },
+    });
+
+    return response.data.map((recipeInfo: RecipeInfo) => ({
+      ...recipeInfo,
+      id: recipeInfo.id,
     }));
   }
 

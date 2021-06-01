@@ -1,5 +1,5 @@
 import './app.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserItems from './components/user-items/user-items';
 import SearchBar from './components/search-bar/search-bar';
 import Spoonacular from './service/spoonacular';
@@ -10,14 +10,15 @@ type Props = {
 };
 
 function App({ spoonacular }: Props): React.ReactElement {
-  const [preItems, setPreItems] = useState<Ingredients>({});
+  const [addedItems, setAddedItems] = useState<Ingredients>({});
   const [selectedItemIds, setSelectedItemIds] = useState(
     new Set<IngredientId>()
   );
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [recipeInfos, setRecipeInfos] = useState<RecipeInfo[]>([]);
 
   const addItem: AddItem = (item: Ingredient) => {
-    setPreItems((prevState) => {
+    setAddedItems((prevState) => {
       const newState = { ...prevState, [item.id]: item };
       return newState;
     });
@@ -36,14 +37,14 @@ function App({ spoonacular }: Props): React.ReactElement {
     });
   };
 
-  const searchMenu = () => {
-    if (preItems == null) {
+  const searchRecipes = () => {
+    if (addedItems == null) {
       // alert
       return;
     }
     const selectedItems: Ingredients = {};
     selectedItemIds.forEach((key) => {
-      selectedItems[key] = preItems[key];
+      selectedItems[key] = addedItems[key];
     });
 
     spoonacular
@@ -53,19 +54,33 @@ function App({ spoonacular }: Props): React.ReactElement {
       });
   };
 
+  const searchRecipeInfo = () => {
+    const recipeIds: RecipeId[] = recipes.map((recipe: Recipe) => recipe.id);
+    spoonacular
+      .getRecipesInformation(recipeIds) //
+      .then((response) => {
+        console.log(response);
+        setRecipeInfos(response);
+      });
+  };
+
   return (
     <div className='app'>
       <SearchBar addItem={addItem} />
       <UserItems
-        preItems={preItems}
+        addedItems={addedItems}
         selectedItemIds={selectedItemIds}
         selectItem={selectItem}
       />
-      <button onClick={searchMenu}>Search Recipe</button>
+      <button onClick={searchRecipes}>Search Recipe</button>
       {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
-        // <img src={recipe.image} alt={recipe.title} />
+        <RecipeCard
+          key={recipe.id}
+          recipe={recipe}
+          addedItemIds={new Set<IngredientId>(Object.keys(addedItems))}
+        />
       ))}
+      <button onClick={searchRecipeInfo}>API Test</button>
     </div>
   );
 }

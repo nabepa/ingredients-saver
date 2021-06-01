@@ -2,13 +2,13 @@ import React from 'react';
 import Item from '../item/item';
 
 type Props = {
-  preItems: Ingredients;
+  addedItems: Ingredients;
   selectedItemIds: Set<IngredientId>;
   selectItem: SelectItem;
 };
 
 const UserItems: React.FC<Props> = ({
-  preItems,
+  addedItems,
   selectedItemIds,
   selectItem,
 }) => {
@@ -18,10 +18,10 @@ const UserItems: React.FC<Props> = ({
 
   return (
     <ul>
-      {Object.keys(preItems).map((id) => (
+      {Object.keys(addedItems).map((id) => (
         <Item
           key={id}
-          item={preItems[id]}
+          item={addedItems[id]}
           itemState={selectedItemIds.has(id) ? 'Selected' : 'Added'}
           handdleClick={handdleClick}
         />
