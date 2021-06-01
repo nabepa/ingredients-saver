@@ -1,5 +1,6 @@
 :root {
   --swiper-navigation-color: #26cf5c;
+  --swiper-pagination-color: #26cf5c;
 }
 
 .swiper-container {
