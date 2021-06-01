@@ -1,28 +1,36 @@
 @value fontMedium from '../../common/size.css';
-@value makerBlack, makerWhite from '../../common/colors.css';
+@value makerBlack, makerSmokyWhite, makerGreen, makerDarkGreen from '../../common/colors.css';
 
 .container {
   width: 100%;
   margin: 0.5em;
+  margin-top: 3em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .headerBar {
+  width: 70%;
   margin: 0;
   height: fontMedium;
   position: relative;
 }
 
 .input {
+  width: 100%;
   font-size: fontMedium;
   height: fontMedium;
   padding: 0 0.2em;
   border: 0;
-  border-bottom: 0.1em solid makerBlack;
+  border-bottom: 0.1em solid makerDarkGreen;
   outline: 0;
   background-color: transparent;
+  color: makerGreen;
+}
+
+.input::placeholder {
+  color: makerDarkGreen;
 }
 
 .input:focus::placeholder {
@@ -31,7 +39,9 @@
 
 .icon {
   font-size: fontMedium;
+  font-weight: 900;
   margin: 0.2em;
+  color: makerDarkGreen;
 }
 
 .filtered {
@@ -45,5 +55,5 @@
   justify-content: start;
   padding: 0;
   margin: 0;
-  background-color: makerWhite;
+  background-color: makerSmokyWhite;
 }
