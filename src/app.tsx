@@ -63,6 +63,9 @@ function App({ spoonacular }: Props): React.ReactElement {
   };
 
   useEffect(() => {
+    if (recipes.length === 0) {
+      return;
+    }
     const recipeIds: RecipeId[] = recipes.map((recipe: Recipe) => recipe.id);
     spoonacular
       .getRecipesInformation(recipeIds) //
@@ -73,7 +76,7 @@ function App({ spoonacular }: Props): React.ReactElement {
         });
         setRecipesInfo(newRecipesInfo);
       });
-  }, [recipes]);
+  }, [recipes, spoonacular]);
 
   useEffect(() => {
     setAddedItemIds(new Set(Object.keys(addedItems)));

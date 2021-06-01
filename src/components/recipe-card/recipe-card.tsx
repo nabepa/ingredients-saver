@@ -24,9 +24,7 @@ const RecipeCard: React.FC<Props> = ({ recipe, recipeInfo, addedItemIds }) => {
       });
       return newState;
     });
-  }, [recipe, addedItemIds]);
-
-  console.log(recipeInfo);
+  }, [recipe, addedItemIds, unselectedPreshopIds]);
 
   return (
     <div className={styles.card}>
@@ -49,6 +47,7 @@ const RecipeCard: React.FC<Props> = ({ recipe, recipeInfo, addedItemIds }) => {
           <a
             className={styles.link}
             href={recipeInfo.sourceUrl}
+            rel='noreferrer'
             target='_blank'
           >
             Check Recipe
@@ -56,7 +55,6 @@ const RecipeCard: React.FC<Props> = ({ recipe, recipeInfo, addedItemIds }) => {
         ) : (
           <p className={styles.loading}></p>
         )}
-        {/* <p className={styles.loading}></p> */}
       </div>
     </div>
   );

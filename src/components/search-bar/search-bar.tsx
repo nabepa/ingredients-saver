@@ -24,10 +24,9 @@ const SearchBar: React.FC<Props> = memo(({ addItem, addedItemIds }) => {
         if (searchTerm === '') {
           return false;
         } else if (ingredient.name.includes(searchTerm.toLocaleLowerCase())) {
-          if (addedItemIds.has(ingredient.id)) {
-            return false;
+          if (!addedItemIds.has(ingredient.id)) {
+            return ingredient;
           }
-          return ingredient;
         }
       }
     );

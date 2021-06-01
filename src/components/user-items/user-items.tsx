@@ -11,9 +11,12 @@ type Props = {
 
 const UserItems: React.FC<Props> = memo(
   ({ addedItems, selectedItemIds, removeItem, selectItem }) => {
-    const handdleClick = useCallback((item: Ingredient) => {
-      selectItem(item);
-    }, []);
+    const handdleClick = useCallback(
+      (item: Ingredient) => {
+        selectItem(item);
+      },
+      [selectItem]
+    );
 
     return (
       <>
