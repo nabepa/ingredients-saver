@@ -1,4 +1,4 @@
-@value fontMedium, headerFooterHeight from './common/size.css';
+@value fontSmall, fontMedium, headerFooterHeight from './common/size.css';
 @value makerWhite, makerGreen, makerDarkGreen from './common/colors.css';
 
 .app {
@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-  background-color: purple;
+  background-color: makerWhite;
 }
 
 .header {
@@ -56,6 +56,10 @@
   background-color: makerWhite;
 }
 
+.recipes {
+  flex-grow: 1;
+}
+
 .button {
   border: 0;
   outline: 0;
@@ -65,24 +69,18 @@
 .searchButton {
   font-size: fontMedium;
   font-weight: 600;
-  line-height: fontMedium;
   margin: 0.5em auto;
   padding: 0.3em;
-  border: 0.2em solid makerGreen;
-  border-radius: 0.3em;
+  border: 0.12em solid makerGreen;
+  border-radius: 0.5em;
   background-color: makerWhite;
   color: makerGreen;
   transition: all 0.1s ease-in-out;
 }
 
 .searchButton:hover {
-  border-color: makerDarkGreen;
-  background-color: makerDarkGreen;
+  background-color: makerGreen;
   color: makerWhite;
-}
-
-.recipes {
-  flex-grow: 1;
 }
 
 /* .infoButton {
@@ -95,7 +93,9 @@
 }
 
 .copyright {
+  font-size: fontSmall;
   line-height: headerFooterHeight;
   text-align: center;
   margin: 0;
+  color: makerWhite;
 }

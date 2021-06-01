@@ -23,7 +23,7 @@
   height: fontMedium;
   padding: 0 0.2em;
   border: 0;
-  border-bottom: 0.1em solid makerDarkGreen;
+  border-bottom: 0.1em solid makerGreen;
   outline: 0;
   background-color: transparent;
   color: makerGreen;
@@ -41,7 +41,7 @@
   font-size: fontMedium;
   font-weight: 900;
   margin: 0.2em;
-  color: makerDarkGreen;
+  color: makerGreen;
 }
 
 .filtered {
