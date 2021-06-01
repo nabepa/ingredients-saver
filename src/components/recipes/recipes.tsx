@@ -19,7 +19,12 @@ type Props = {
 const Recipes: React.FC<Props> = memo(
   ({ recipes, recipesInfo, addedItemIds }) => {
     return (
-      <Swiper pagination={true} navigation={true} loop={true}>
+      <Swiper
+        className='mySwiper'
+        pagination={true}
+        navigation={true}
+        loop={true}
+      >
         {recipes.map((recipe) => {
           return (
             <SwiperSlide>

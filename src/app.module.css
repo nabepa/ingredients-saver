@@ -92,10 +92,10 @@
   margin: 0;
   color: makerWhite;
 }
-/* 
+
 @media screen and (max-width: mediaQuery) {
   .main {
     flex-direction: column;
     align-items: center;
   }
-} */
+}
