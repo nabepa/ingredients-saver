@@ -25,6 +25,14 @@ function App({ spoonacular }: Props): React.ReactElement {
     });
   }, []);
 
+  const removeItem: RemoveItem = useCallback((item: Ingredient) => {
+    setAddedItems((prevState) => {
+      const newState = { ...prevState };
+      delete newState[item.id];
+      return newState;
+    });
+  }, []);
+
   const selectItem: SelectItem = useCallback((item: Ingredient) => {
     setSelectedItemIds((prevState) => {
       const newState = new Set<IngredientId>(prevState);
@@ -83,6 +91,7 @@ function App({ spoonacular }: Props): React.ReactElement {
             <UserItems
               addedItems={addedItems}
               selectedItemIds={selectedItemIds}
+              removeItem={removeItem}
               selectItem={selectItem}
             />
           </section>

@@ -5,16 +5,19 @@ type Props = {
   key: string | number;
   item: Ingredient;
   itemState?: ItemState;
+  removeItem?: RemoveItem;
   handdleClick?: HanddleClickItem;
 };
 
 const Item: React.FC<Props> = memo(
-  ({ item, itemState, handdleClick }) => {
+  ({ item, itemState, removeItem, handdleClick }) => {
   const onClick = () => {
     handdleClick && handdleClick(item);
   };
-
-  console.log('item');
+  
+  const handdleRemove = () => {
+    removeItem && removeItem(item);
+  }
 
   return (
     <li
@@ -23,7 +26,7 @@ const Item: React.FC<Props> = memo(
     >
       {
         itemState && 
-          <i className="material-icons">
+          <i className="material-icons" onClick={handdleRemove}>
             {getIcons(itemState)}
           </i>
       }

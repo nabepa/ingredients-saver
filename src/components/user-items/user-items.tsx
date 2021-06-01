@@ -6,10 +6,11 @@ type Props = {
   addedItems: Ingredients;
   selectedItemIds: Set<IngredientId>;
   selectItem: SelectItem;
+  removeItem: RemoveItem;
 };
 
 const UserItems: React.FC<Props> = memo(
-  ({ addedItems, selectedItemIds, selectItem }) => {
+  ({ addedItems, selectedItemIds, removeItem, selectItem }) => {
     const handdleClick = useCallback((item: Ingredient) => {
       selectItem(item);
     }, []);
@@ -23,6 +24,7 @@ const UserItems: React.FC<Props> = memo(
               key={id}
               item={addedItems[id]}
               itemState={selectedItemIds.has(id) ? 'Used' : 'Unused'}
+              removeItem={removeItem}
               handdleClick={handdleClick}
             />
           ))}
