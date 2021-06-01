@@ -1,10 +1,17 @@
+@value makerGreen, makerDarkGreen from '../../common/colors.css';
+@value fontMedium from '../../common/size.css';
+
 .li {
-  color: black;
-  font-weight: 900;
+  font-size: fontMedium;
+  font-weight: 700;
   cursor: pointer;
-  margin: 0 0.1em;
+  margin: 0.1em;
+  color: makerGreen;
 }
 
+.li:hover {
+  color: makerDarkGreen;
+}
 /* .li.filtered {
   color: red;
 } */
@@ -12,7 +19,7 @@
   color: orange;
 }
 .li.selected {
-  color: #fbdf03;
+  color: makerDarkGreen;
 }
 .li.used {
   color: green;

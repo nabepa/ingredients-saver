@@ -18,16 +18,19 @@ const UserItems: React.FC<Props> = ({
   };
 
   return (
-    <ul className={styles.list}>
-      {Object.keys(addedItems).map((id) => (
-        <Item
-          key={id}
-          item={addedItems[id]}
-          itemState={selectedItemIds.has(id) ? 'Selected' : 'Added'}
-          handdleClick={handdleClick}
-        />
-      ))}
-    </ul>
+    <>
+      <h2 className={styles.title}>My List</h2>
+      <ul className={styles.list}>
+        {Object.keys(addedItems).map((id) => (
+          <Item
+            key={id}
+            item={addedItems[id]}
+            itemState={selectedItemIds.has(id) ? 'Selected' : ''}
+            handdleClick={handdleClick}
+          />
+        ))}
+      </ul>
+    </>
   );
 };
 

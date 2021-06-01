@@ -5,6 +5,7 @@ type Ingredients = Record<IngredientId, Ingredient>;
 
 type ImageType = 'png' | 'jpg';
 type ItemState =
+  | ''
   | 'Filtered'
   | 'Added'
   | 'Selected'

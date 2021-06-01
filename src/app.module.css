@@ -57,8 +57,11 @@
 
 .userItems {
   flex-grow: 1;
-  overflow-y: auto;
-  background-color: violet;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: makerWhite;
 }
 
 /* .searchButton {
