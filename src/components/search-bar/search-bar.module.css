@@ -46,7 +46,8 @@
 
 .filtered {
   position: absolute;
-  top: calc(0.1em + fontMedium);
+  /* top: calc(0.1em + fontMedium); */
+  top: 1.1rem;
   max-height: 40vh;
   width: 100%;
   overflow-y: auto;
