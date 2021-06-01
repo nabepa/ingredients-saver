@@ -1,13 +1,5 @@
-@value headerFooterHeight from './common/size.css';
+@value fontMedium, headerFooterHeight from './common/size.css';
 @value makerWhite, makerGreen, makerDarkGreen from './common/colors.css';
-
-.button {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  margin: 0.5em auto;
-  padding: 0.5em 0;
-}
 
 .app {
   height: 100vh;
@@ -64,8 +56,30 @@
   background-color: makerWhite;
 }
 
-/* .searchButton {
-} */
+.button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.searchButton {
+  font-size: fontMedium;
+  font-weight: 600;
+  line-height: fontMedium;
+  margin: 0.5em auto;
+  padding: 0.3em;
+  border: 0.2em solid makerGreen;
+  border-radius: 0.3em;
+  background-color: makerWhite;
+  color: makerGreen;
+  transition: all 0.1s ease-in-out;
+}
+
+.searchButton:hover {
+  border-color: makerDarkGreen;
+  background-color: makerDarkGreen;
+  color: makerWhite;
+}
 
 .recipes {
   flex-grow: 1;
