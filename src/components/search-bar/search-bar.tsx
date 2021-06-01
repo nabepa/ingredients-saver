@@ -1,4 +1,4 @@
-// import styles from './search-bar.module.css';
+import styles from './search-bar.module.css';
 import React, { useEffect, useState } from 'react';
 import Item from '../item/item';
 import INGREDIENTS from '../../common/INGREDIENTS.json';
@@ -33,14 +33,19 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
   }, [searchTerm]);
 
   return (
-    <div>
-      <input
-        value={searchTerm}
-        type='text'
-        placeholder='Add a new item'
-        onChange={onChange}
-      />
-      <ul>
+    <div className={styles.container}>
+      <div className={styles.headerBar}>
+        <i className={`material-icons`}>kitchen</i>
+        <input
+          className={styles.input}
+          value={searchTerm}
+          type='text'
+          placeholder='Add a new item'
+          onChange={onChange}
+        />
+        <i className={`material-icons`}>search</i>
+      </div>
+      <ul className={styles.filtered}>
         {filtered.map((item) => {
           return <Item key={item.id} item={item} handdleClick={handdleClick} />;
         })}

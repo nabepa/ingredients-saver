@@ -1,5 +1,5 @@
-import './app.css';
-import React, { useEffect, useState } from 'react';
+import styles from './app.module.css';
+import React, { useState } from 'react';
 import UserItems from './components/user-items/user-items';
 import SearchBar from './components/search-bar/search-bar';
 import Spoonacular from './service/spoonacular';
@@ -65,21 +65,27 @@ function App({ spoonacular }: Props): React.ReactElement {
   };
 
   return (
-    <div className='app'>
-      <SearchBar addItem={addItem} />
-      <UserItems
-        addedItems={addedItems}
-        selectedItemIds={selectedItemIds}
-        selectItem={selectItem}
-      />
-      <button onClick={searchRecipes}>Search Recipe</button>
-      {recipes.map((recipe) => (
-        <RecipeCard
-          key={recipe.id}
-          recipe={recipe}
-          addedItemIds={new Set<IngredientId>(Object.keys(addedItems))}
+    <div className={styles.app}>
+      <header className={styles.header}>
+        <SearchBar addItem={addItem} />
+      </header>
+      <section className={styles.userItems}>
+        <UserItems
+          addedItems={addedItems}
+          selectedItemIds={selectedItemIds}
+          selectItem={selectItem}
         />
-      ))}
+        <button onClick={searchRecipes}>Search Recipe</button>
+      </section>
+      <section className={styles.recipes}>
+        {recipes.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            recipe={recipe}
+            addedItemIds={new Set<IngredientId>(Object.keys(addedItems))}
+          />
+        ))}
+      </section>
       <button onClick={searchRecipeInfo}>API Test</button>
     </div>
   );
