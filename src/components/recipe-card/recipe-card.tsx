@@ -2,7 +2,11 @@ import styles from './recipe-card.module.css';
 import React, { useEffect, useState } from 'react';
 import Item from '../item/item';
 
-type Props = { key: RecipeId; recipe: Recipe; addedItemIds: Set<IngredientId> };
+type Props = {
+  key: RecipeId;
+  recipe: Recipe;
+  addedItemIds: Set<IngredientId>;
+};
 
 const RecipeCard: React.FC<Props> = ({ recipe, addedItemIds }) => {
   const [unselectedPreshopIds, setUnselectedPreshopIds] = useState(
@@ -19,8 +23,6 @@ const RecipeCard: React.FC<Props> = ({ recipe, addedItemIds }) => {
       });
       return newState;
     });
-
-    console.log(unselectedPreshopIds);
   }, [recipe, addedItemIds]);
 
   return (

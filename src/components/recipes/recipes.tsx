@@ -1,5 +1,5 @@
 import './recipes.css';
-import React from 'react';
+import React, { memo } from 'react';
 import RecipeCard from '../recipe-card/recipe-card';
 
 // swiper
@@ -10,9 +10,12 @@ import 'swiper/components/navigation/navigation.min.css';
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 SwiperCore.use([Pagination, Navigation]);
 
-type Props = { recipes: Recipe[]; addedItemIds: Set<IngredientId> };
+type Props = {
+  recipes: Recipe[];
+  addedItemIds: Set<IngredientId>;
+};
 
-const Recipes: React.FC<Props> = ({ recipes, addedItemIds }) => {
+const Recipes: React.FC<Props> = memo(({ recipes, addedItemIds }) => {
   return (
     <Swiper pagination={true} navigation={true} loop={true}>
       {recipes.map((recipe) => {
@@ -28,6 +31,6 @@ const Recipes: React.FC<Props> = ({ recipes, addedItemIds }) => {
       })}
     </Swiper>
   );
-};
+});
 
 export default Recipes;

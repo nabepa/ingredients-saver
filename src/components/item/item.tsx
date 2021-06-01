@@ -1,5 +1,5 @@
 import styles from './item.module.css';
-import React from 'react';
+import React, { memo } from 'react';
 
 type Props = {
   key: string | number;
@@ -8,10 +8,13 @@ type Props = {
   handdleClick?: HanddleClickItem;
 };
 
-const Item: React.FC<Props> = ({ item, itemState, handdleClick }) => {
+const Item: React.FC<Props> = memo(
+  ({ item, itemState, handdleClick }) => {
   const onClick = () => {
     handdleClick && handdleClick(item);
   };
+
+  console.log('item');
 
   return (
     <li
@@ -27,7 +30,7 @@ const Item: React.FC<Props> = ({ item, itemState, handdleClick }) => {
       <span className={styles.name}>{item.name}</span>
     </li>
   );
-};
+});
 
 function getStyles(itemState:ItemState) {
   switch(itemState) {

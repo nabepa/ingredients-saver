@@ -1,11 +1,11 @@
 import styles from './search-bar.module.css';
-import React, { useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import Item from '../item/item';
 import INGREDIENTS from '../../common/INGREDIENTS.json';
 
-type Props = { addItem: AddItem };
+type Props = { addItem: AddItem; addedItemIds: Set<IngredientId> };
 
-const SearchBar: React.FC<Props> = ({ addItem }) => {
+const SearchBar: React.FC<Props> = memo(({ addItem, addedItemIds }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filtered, setFiltered] = useState<Ingredient[]>([]);
 
@@ -13,10 +13,10 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
     setSearchTerm(event.target.value.trimLeft());
   };
 
-  const handdleClick: HanddleClickItem = (item) => {
+  const handdleClick: HanddleClickItem = useCallback((item) => {
     addItem(item);
     setSearchTerm('');
-  };
+  }, []);
 
   useEffect(() => {
     const newFiltered: Ingredient[] = INGREDIENTS.filter(
@@ -24,6 +24,9 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
         if (searchTerm === '') {
           return false;
         } else if (ingredient.name.includes(searchTerm.toLocaleLowerCase())) {
+          if (addedItemIds.has(ingredient.id)) {
+            return false;
+          }
           return ingredient;
         }
       }
@@ -53,6 +56,6 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
       <i className={`${styles.icon} material-icons`}>search</i>
     </div>
   );
-};
+});
 
 export default SearchBar;
