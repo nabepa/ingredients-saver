@@ -1,3 +1,7 @@
+:root {
+  --swiper-navigation-color: #26cf5c;
+}
+
 .swiper-container {
   width: 100%;
   height: 100%;
@@ -5,7 +9,7 @@
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.2em;
   background: #fff;
 
   /* Center slide text vertically */
