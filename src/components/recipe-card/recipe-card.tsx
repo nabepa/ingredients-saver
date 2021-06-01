@@ -44,14 +44,20 @@ const RecipeCard: React.FC<Props> = ({ recipe, recipeInfo, addedItemIds }) => {
           }
         })}
       </ul>
-      {recipeInfo ? (
-        <a href={recipeInfo.sourceUrl} target='_blank'>
-          Check Recipe
-        </a>
-      ) : (
-        <span>Loading...</span>
-      )}
-      {/* <button>{recipeInfo.sourceUrl}</button> */}
+      <div className={styles.linkContainer}>
+        {recipeInfo ? (
+          <a
+            className={styles.link}
+            href={recipeInfo.sourceUrl}
+            target='_blank'
+          >
+            Check Recipe
+          </a>
+        ) : (
+          <p className={styles.loading}></p>
+        )}
+        {/* <p className={styles.loading}></p> */}
+      </div>
     </div>
   );
 };

@@ -98,10 +98,7 @@ function App({ spoonacular }: Props): React.ReactElement {
               selectItem={selectItem}
             />
           </section>
-          <button
-            className={`${styles.button} ${styles.searchButton}`}
-            onClick={searchRecipes}
-          >
+          <button className={styles.searchButton} onClick={searchRecipes}>
             Search Recipe
           </button>
         </div>

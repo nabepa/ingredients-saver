@@ -60,22 +60,18 @@
   flex-grow: 1;
 }
 
-.button {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-}
-
 .searchButton {
   font-size: fontMedium;
   font-weight: 600;
   margin: 0.5em auto;
   padding: 0.3em;
+  outline: 0;
   border: 0.12em solid makerGreen;
   border-radius: 0.5em;
   background-color: makerWhite;
   color: makerGreen;
   transition: all 0.1s ease-in-out;
+  cursor: pointer;
 }
 
 .searchButton:hover {

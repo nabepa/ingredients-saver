@@ -1,9 +1,11 @@
-@value fontLarge from '../../common/size.css';
-@value makerGreen from '../../common/colors.css';
+@value fontMedium, fontLarge from '../../common/size.css';
+@value makerWhite, makerGreen, makerDarkGreen, makerGrey from '../../common/colors.css';
 
 .card {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -19,8 +21,55 @@
 }
 
 .ul {
+  max-height: 20vh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   padding: 0;
-  font-size: 1rem;
+  font-size: fontMedium;
+}
+
+.linkContainer {
+  margin-top: 0.5em;
+  padding: 0.1em;
+  border: 0.1em solid makerGreen;
+  border-radius: 0.5em;
+  transition: all 0.1s ease-in-out;
+  font-size: fontMedium;
+}
+
+.linkContainer:hover {
+  background-color: makerGreen;
+}
+
+.linkContainer:hover .link {
+  color: makerWhite;
+}
+
+.link {
+  color: makerGreen;
+  transition: all 0.1s ease-in-out;
+}
+
+.link,
+.link:hover {
+  text-decoration: none;
+}
+
+.loading {
+  width: fontLarge;
+  height: fontLarge;
+  border-radius: 50%;
+  border: 0.2em solid makerGrey;
+  border-top: 0.2em solid makerDarkGreen;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
