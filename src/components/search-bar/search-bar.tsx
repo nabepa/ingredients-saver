@@ -13,10 +13,13 @@ const SearchBar: React.FC<Props> = memo(({ addItem, addedItemIds }) => {
     setSearchTerm(event.target.value.trimLeft());
   };
 
-  const handdleClick: HanddleClickItem = useCallback((item) => {
-    addItem(item);
-    setSearchTerm('');
-  }, []);
+  const handdleClick: HanddleClickItem = useCallback(
+    (item) => {
+      addItem(item);
+      setSearchTerm('');
+    },
+    [addItem]
+  );
 
   useEffect(() => {
     const newFiltered: Ingredient[] = INGREDIENTS.filter(
@@ -25,14 +28,15 @@ const SearchBar: React.FC<Props> = memo(({ addItem, addedItemIds }) => {
           return false;
         } else if (ingredient.name.includes(searchTerm.toLocaleLowerCase())) {
           if (!addedItemIds.has(ingredient.id)) {
-            return ingredient;
+            return true;
           }
         }
+        return false;
       }
     );
 
     setFiltered(newFiltered);
-  }, [searchTerm]);
+  }, [searchTerm, addedItemIds]);
 
   return (
     <div className={styles.container}>
