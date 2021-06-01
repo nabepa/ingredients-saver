@@ -5,10 +5,11 @@ import Item from '../item/item';
 type Props = {
   key: RecipeId;
   recipe: Recipe;
+  recipeInfo: RecipeInfo;
   addedItemIds: Set<IngredientId>;
 };
 
-const RecipeCard: React.FC<Props> = ({ recipe, addedItemIds }) => {
+const RecipeCard: React.FC<Props> = ({ recipe, recipeInfo, addedItemIds }) => {
   const [unselectedPreshopIds, setUnselectedPreshopIds] = useState(
     new Set<IngredientId>()
   );
@@ -24,6 +25,8 @@ const RecipeCard: React.FC<Props> = ({ recipe, addedItemIds }) => {
       return newState;
     });
   }, [recipe, addedItemIds]);
+
+  console.log(recipeInfo);
 
   return (
     <div className={styles.card}>
@@ -41,6 +44,14 @@ const RecipeCard: React.FC<Props> = ({ recipe, addedItemIds }) => {
           }
         })}
       </ul>
+      {recipeInfo ? (
+        <a href={recipeInfo.sourceUrl} target='_blank'>
+          Check Recipe
+        </a>
+      ) : (
+        <span>Loading...</span>
+      )}
+      {/* <button>{recipeInfo.sourceUrl}</button> */}
     </div>
   );
 };

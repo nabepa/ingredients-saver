@@ -12,25 +12,29 @@ SwiperCore.use([Pagination, Navigation]);
 
 type Props = {
   recipes: Recipe[];
+  recipesInfo: RecipesInfo;
   addedItemIds: Set<IngredientId>;
 };
 
-const Recipes: React.FC<Props> = memo(({ recipes, addedItemIds }) => {
-  return (
-    <Swiper pagination={true} navigation={true} loop={true}>
-      {recipes.map((recipe) => {
-        return (
-          <SwiperSlide>
-            <RecipeCard
-              key={recipe.id}
-              recipe={recipe}
-              addedItemIds={addedItemIds}
-            />
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
-  );
-});
+const Recipes: React.FC<Props> = memo(
+  ({ recipes, recipesInfo, addedItemIds }) => {
+    return (
+      <Swiper pagination={true} navigation={true} loop={true}>
+        {recipes.map((recipe) => {
+          return (
+            <SwiperSlide>
+              <RecipeCard
+                key={recipe.id}
+                recipe={recipe}
+                recipeInfo={recipesInfo[recipe.id]}
+                addedItemIds={addedItemIds}
+              />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    );
+  }
+);
 
 export default Recipes;

@@ -7,7 +7,7 @@ class Spoonacular {
     this.spoonacular = httpClient;
   }
 
-  async getRecipesByIngredients(items: Ingredients) {
+  async getRecipesByIngredients(items: Ingredients): Promise<Recipe[]> {
     const response = await this.spoonacular.get('recipes/findByIngredients', {
       params: {
         ingredients: this.makeIngredientsQuery(items),
@@ -24,7 +24,7 @@ class Spoonacular {
     }));
   }
 
-  async getRecipesInformation(recipeIds: RecipeId[]) {
+  async getRecipesInformation(recipeIds: RecipeId[]): Promise<RecipeInfo[]> {
     const response = await this.spoonacular.get('recipes/informationBulk', {
       params: {
         ids: recipeIds.join(','),

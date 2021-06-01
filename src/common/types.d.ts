@@ -23,6 +23,7 @@ type RecipeInfo = {
   id: RecipeId;
   sourceUrl: string;
 };
+type RecipesInfo = Record<RecipeId, RecipeInfo>;
 
 type AddItem = (item: Ingredient) => void;
 type RemoveItem = (item: Ingredient) => void;
