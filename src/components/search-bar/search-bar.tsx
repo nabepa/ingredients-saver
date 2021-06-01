@@ -10,7 +10,7 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
   const [filtered, setFiltered] = useState<Ingredient[]>([]);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchTerm(event.target.value.trim());
+    setSearchTerm(event.target.value.trimLeft());
   };
 
   const handdleClick: HanddleClickItem = (item) => {
@@ -35,7 +35,6 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
   return (
     <div className={styles.container}>
       <div className={styles.headerBar}>
-        <i className={`material-icons`}>kitchen</i>
         <input
           className={styles.input}
           value={searchTerm}
@@ -43,13 +42,15 @@ const SearchBar: React.FC<Props> = ({ addItem }) => {
           placeholder='Add a new item'
           onChange={onChange}
         />
-        <i className={`material-icons`}>search</i>
+        <ul className={styles.filtered}>
+          {filtered.map((item) => {
+            return (
+              <Item key={item.id} item={item} handdleClick={handdleClick} />
+            );
+          })}
+        </ul>
       </div>
-      <ul className={styles.filtered}>
-        {filtered.map((item) => {
-          return <Item key={item.id} item={item} handdleClick={handdleClick} />;
-        })}
-      </ul>
+      <i className={`${styles.icon} material-icons`}>search</i>
     </div>
   );
 };

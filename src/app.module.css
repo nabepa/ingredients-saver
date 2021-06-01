@@ -1,3 +1,6 @@
+@value headerFooterHeight from './common/size.css';
+@value makerWhite, makerGreen, makerDarkGreen from './common/colors.css';
+
 .button {
   border: 0;
   outline: 0;
@@ -16,12 +19,21 @@
 }
 
 .header {
-  margin: 0.2rem;
+  height: headerFooterHeight;
+  padding: 0.2rem;
+  background-color: makerGreen;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  color: makerWhite;
 }
 
 .title {
-  text-align: center;
-  margin: 0;
+  font-size: 1.5rem;
+  margin: 0 0.2em;
+  color: makerWhite;
 }
 
 .main {
@@ -60,10 +72,13 @@
 } */
 
 .footer {
-  margin: 0.2rem;
+  height: headerFooterHeight;
+  padding: 0.2rem;
+  background-color: makerGreen;
 }
 
 .copyright {
+  line-height: headerFooterHeight;
   text-align: center;
   margin: 0;
 }

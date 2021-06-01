@@ -67,7 +67,8 @@ function App({ spoonacular }: Props): React.ReactElement {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Header</h1>
+        <i className={`${styles.logo} material-icons`}>kitchen</i>
+        <h1 className={styles.title}>Ingredients Saver</h1>
       </header>
       <main className={styles.main}>
         <div className={styles.container}>

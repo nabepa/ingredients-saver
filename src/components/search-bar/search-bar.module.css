@@ -1,28 +1,42 @@
+@value fontMedium from '../../common/size.css';
+@value makerBlack, makerWhite from '../../common/colors.css';
+
 .container {
-  width: 50%;
-  position: relative;
+  width: 100%;
+  margin: 0.5em;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: tomato;
-  margin: 0.5rem 0.5em;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerBar {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  margin: 0;
+  height: fontMedium;
+  position: relative;
 }
 
 .input {
-  flex-grow: 1;
+  font-size: fontMedium;
+  height: fontMedium;
+  padding: 0 0.2em;
   border: 0;
+  border-bottom: 0.1em solid makerBlack;
   outline: 0;
+  background-color: transparent;
+}
+
+.input:focus::placeholder {
+  opacity: 0;
+}
+
+.icon {
+  font-size: fontMedium;
+  margin: 0.2em;
 }
 
 .filtered {
   position: absolute;
-  top: 1.5rem; /**/
+  top: calc(0.1em + fontMedium);
   max-height: 40vh;
   width: 100%;
   overflow-y: auto;
@@ -31,5 +45,5 @@
   justify-content: start;
   padding: 0;
   margin: 0;
-  background-color: thistle;
+  background-color: makerWhite;
 }
