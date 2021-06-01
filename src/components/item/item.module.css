@@ -2,6 +2,8 @@
 @value fontMedium from '../../common/size.css';
 
 .li {
+  display: flex;
+  align-items: center;
   font-size: fontMedium;
   font-weight: 700;
   cursor: pointer;
@@ -29,5 +31,9 @@
 }
 .li.missed {
   order: 1;
-  color: purple;
+}
+
+.name {
+  font-size: fontMedium;
+  margin: 0 0.2em;
 }

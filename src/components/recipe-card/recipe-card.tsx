@@ -12,11 +12,7 @@ const RecipeCard: React.FC<Props> = ({ recipe, addedItemIds }) => {
   useEffect(() => {
     setUnselectedPreshopIds(() => {
       const newState = new Set<IngredientId>(unselectedPreshopIds);
-      console.log('----');
-      console.log(addedItemIds);
       recipe.missedIngredients.forEach((item: Ingredient) => {
-        console.log(item.id);
-
         if (addedItemIds.has(item.id.toString())) {
           newState.add(item.id);
         }
