@@ -1,6 +1,7 @@
 You can try this app, click below badge!
 </br>
-<a href="https://jovial-elion-1df897.netlify.app/" target="_blank">![Netlify Status](https://api.netlify.com/api/v1/badges/aea01573-e082-44b4-8617-12e71bf71494/deploy-status)</a>
+<a href="https://jovial-elion-1df897.netlify.app/
+" target="_blank">![Netlify Status](https://api.netlify.com/api/v1/badges/aea01573-e082-44b4-8617-12e71bf71494/deploy-status)</a>
 
 # 🚀 開発背景
 
@@ -9,6 +10,8 @@ You can try this app, click below badge!
 - おすすめのレシピーで持っていない材料を教えてもらって買い物の時間も減らしたい ⏱
 
 # ⭐️ 機能
+
+z
 
 ## 必須機能
 
@@ -38,7 +41,9 @@ You can try this app, click below badge!
 # 📚 使用ライブラリとリソース， API
 
 [axios](https://github.com/axios/axios): REST API 使用
+
 [spooncular](https://spoonacular.com/food-api): レシピーの API
+
 [swiper](https://swiperjs.com/): レシピーの slider 表示
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
