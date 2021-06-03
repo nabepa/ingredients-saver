@@ -46,6 +46,8 @@ z
 
 [swiper](https://swiperjs.com/): レシピーの slider 表示
 
+[google fonts](https://fonts.google.com/icons): 各種アイコ n
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # 🐛 改善が必要な部分
