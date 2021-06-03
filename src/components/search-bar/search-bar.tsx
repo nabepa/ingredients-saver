@@ -51,7 +51,12 @@ const SearchBar: React.FC<Props> = memo(({ addItem, addedItemIds }) => {
         <ul className={styles.filtered}>
           {filtered.map((item) => {
             return (
-              <Item key={item.id} item={item} handdleClick={handdleClick} />
+              <Item
+                key={item.id}
+                item={item}
+                itemState='Filtered'
+                handdleClick={handdleClick}
+              />
             );
           })}
         </ul>

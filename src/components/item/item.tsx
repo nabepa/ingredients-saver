@@ -37,6 +37,8 @@ const Item: React.FC<Props> = memo(
 
 function getStyles(itemState:ItemState) {
   switch(itemState) {
+    case 'Filtered':
+      return styles.filtered;
     case 'Used':
       return styles.used;
     case 'Unused':
@@ -54,6 +56,8 @@ function getStyles(itemState:ItemState) {
 
 function getIcons(itemState:ItemState) {
   switch(itemState) {
+    case 'Filtered':
+      return '';
     case 'Used':
     case 'Unused':
       return 'delete_outline';

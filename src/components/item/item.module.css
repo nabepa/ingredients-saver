@@ -10,6 +10,11 @@
   color: makerGreen;
 }
 
+.li.filtered:hover {
+  color: makerDarkGreen;
+}
+
+.li.filtered,
 .li.used,
 .li.unused {
   cursor: pointer;

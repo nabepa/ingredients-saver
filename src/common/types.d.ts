@@ -4,7 +4,13 @@ type Ingredient = { id: IngredientId; name: IngredientName; image?: string };
 type Ingredients = Record<IngredientId, Ingredient>;
 
 type ImageType = 'png' | 'jpg';
-type ItemState = 'Used' | 'Unused' | 'Added' | 'Selected' | 'Missed';
+type ItemState =
+  | 'Filtered'
+  | 'Used'
+  | 'Unused'
+  | 'Added'
+  | 'Selected'
+  | 'Missed';
 
 type RecipeId = number | string;
 type Recipe = {
