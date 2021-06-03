@@ -11,8 +11,6 @@ You can try this app, click below badge!
 
 # ⭐️ 機能
 
-z
-
 ## 必須機能
 
 ![inApp](public/images/main.png)
