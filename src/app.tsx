@@ -47,7 +47,7 @@ function App({ spoonacular }: Props): React.ReactElement {
   }, []);
 
   const searchRecipes = () => {
-    if (addedItems == null) {
+    if (selectedItemIds.size === 0) {
       return;
     }
     const selectedItems: Ingredients = {};

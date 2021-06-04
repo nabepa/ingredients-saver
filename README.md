@@ -50,4 +50,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # 🐛 改善が必要な部分
 
-- setState に useEffect を入れることで，無限にレシピーを持ってくることになっている
+- ~~Recipe Card が無限に re-render されている~~
+  → useEffect 内で unselectedPreshopIds という state を更新し，dependency にも設定していた事で無限ループしていた
+  useEffect に setState を利用する際，Dependancy の設定を間違うと無限に re-rendering してしまうので注意
+  (June4, 2021)
+  ただし，次のような warning が出始めている
+  `React Hook useEffect has a missing dependency: 'unselectedPreshopIds'. Either include it or remove the dependency array. You can also do a functional update 'setUnselectedPreshopIds(u => ...)' if you only need 'unselectedPreshopIds' in the 'setUnselectedPreshopIds' call react-hooks/exhaustive-deps`
+  →
