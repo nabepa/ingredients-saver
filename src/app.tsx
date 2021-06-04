@@ -31,6 +31,7 @@ function App({ spoonacular }: Props): React.ReactElement {
       delete newState[item.id];
       return newState;
     });
+    selectedItemIds.has(item.id) && selectItem(item);
   }, []);
 
   const selectItem: SelectItem = useCallback((item: Ingredient) => {
@@ -62,21 +63,21 @@ function App({ spoonacular }: Props): React.ReactElement {
       });
   };
 
-  // useEffect(() => {
-  //   if (recipes.length === 0) {
-  //     return;
-  //   }
-  //   const recipeIds: RecipeId[] = recipes.map((recipe: Recipe) => recipe.id);
-  //   spoonacular
-  //     .getRecipesInformation(recipeIds) //
-  //     .then((response) => {
-  //       const newRecipesInfo: RecipesInfo = {};
-  //       response.forEach((recipeInfo) => {
-  //         newRecipesInfo[recipeInfo.id] = recipeInfo;
-  //       });
-  //       setRecipesInfo(newRecipesInfo);
-  //     });
-  // }, [recipes, spoonacular]);
+  useEffect(() => {
+    if (recipes.length === 0) {
+      return;
+    }
+    const recipeIds: RecipeId[] = recipes.map((recipe: Recipe) => recipe.id);
+    spoonacular
+      .getRecipesInformation(recipeIds) //
+      .then((response) => {
+        const newRecipesInfo: RecipesInfo = {};
+        response.forEach((recipeInfo) => {
+          newRecipesInfo[recipeInfo.id] = recipeInfo;
+        });
+        setRecipesInfo(newRecipesInfo);
+      });
+  }, [recipes, spoonacular]);
 
   useEffect(() => {
     setAddedItemIds(new Set(Object.keys(addedItems)));
