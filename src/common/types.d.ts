@@ -5,12 +5,12 @@ type Ingredients = Record<IngredientId, Ingredient>;
 
 type ImageType = 'png' | 'jpg';
 type ItemState =
-  | 'Filtered'
-  | 'Used'
-  | 'Unused'
-  | 'Added'
-  | 'Selected'
-  | 'Missed';
+  | 'Filtered' // filtered item in search bar
+  | 'Used' // item user select to use
+  | 'Unused' // item user doesn't select to use
+  | 'Added' // needed item user has but doesn't select to use
+  | 'Selected' // needed item user has and select to use
+  | 'Missed'; // needed item user doesn't have but
 
 type RecipeId = number | string;
 type Recipe = {

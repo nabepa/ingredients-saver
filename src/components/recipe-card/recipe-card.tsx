@@ -7,41 +7,64 @@ type Props = {
   recipe: Recipe;
   recipeInfo: RecipeInfo;
   addedItemIds: Set<IngredientId>;
+  selectedItemIds: Set<IngredientId>;
 };
 
 const RecipeCard: React.FC<Props> = memo(
-  ({ recipe, recipeInfo, addedItemIds }) => {
-    const [unselectedPreshopIds, setUnselectedPreshopIds] = useState(
-      new Set<IngredientId>()
-    );
+  ({ recipe, recipeInfo, addedItemIds, selectedItemIds }) => {
+    const [selectedPreshopItems, setSelectedPreshopItems] = useState<
+      Ingredient[]
+    >([]);
+    const [unselectedPreshopItems, setUnselectedPreshopItems] = useState<
+      Ingredient[]
+    >([]);
+    const [postshopItems, setPostshopItems] = useState<Ingredient[]>([]);
 
     useEffect(() => {
-      setUnselectedPreshopIds(() => {
-        const newState = new Set<IngredientId>(unselectedPreshopIds);
-        recipe.missedIngredients.forEach((item: Ingredient) => {
-          if (addedItemIds.has(item.id.toString())) {
-            newState.add(item.id);
-          }
-        });
-        return newState;
+      const newSelectedPreshopItems: Ingredient[] = [];
+      const newUnselectedPreshopItems: Ingredient[] = [];
+      const newPostshopItems: Ingredient[] = [];
+
+      // recipe.usedIngredients: selected ingredients for the recipe when it searched
+      // recipe.missedIngredients: unselected ingredients for the recipe when it searched
+      recipe.usedIngredients.forEach((ingredient) => {
+        if (selectedItemIds.has(ingredient.id.toString())) {
+          newSelectedPreshopItems.push(ingredient);
+        } else if (addedItemIds.has(ingredient.id.toString())) {
+          newUnselectedPreshopItems.push(ingredient);
+        } else {
+          newPostshopItems.push(ingredient);
+        }
       });
-    }, [recipe, recipeInfo, addedItemIds]);
+      recipe.missedIngredients.forEach((ingredient) => {
+        if (selectedItemIds.has(ingredient.id.toString())) {
+          newSelectedPreshopItems.push(ingredient);
+        } else if (addedItemIds.has(ingredient.id.toString())) {
+          newUnselectedPreshopItems.push(ingredient);
+        } else {
+          newPostshopItems.push(ingredient);
+        }
+      });
+
+      setSelectedPreshopItems(newSelectedPreshopItems);
+      setUnselectedPreshopItems(newUnselectedPreshopItems);
+      setPostshopItems(newPostshopItems);
+    }, [recipe, recipeInfo, addedItemIds, selectedItemIds]);
 
     return (
       <div className={styles.card}>
         <h2 className={styles.title}>{recipe.title}</h2>
         <img className={styles.image} src={recipe.image} alt={recipe.title} />
         <ul className={styles.ul}>
-          {recipe.usedIngredients.map((item: Ingredient) => (
+          {selectedPreshopItems.map((item) => (
             <Item key={item.id} item={item} itemState='Selected' />
           ))}
-          {recipe.missedIngredients.map((item: Ingredient) => {
-            if (unselectedPreshopIds.has(item.id)) {
-              return <Item key={item.id} item={item} itemState='Added' />;
-            } else {
-              return <Item key={item.id} item={item} itemState='Missed' />;
-            }
-          })}
+          {unselectedPreshopItems.map((item) => (
+            <Item key={item.id} item={item} itemState='Added' />
+          ))}
+          {postshopItems.map((item) => (
+            <Item key={item.id} item={item} itemState='Missed' />
+          ))}
         </ul>
         <div className={styles.linkContainer}>
           {recipeInfo ? (

@@ -14,10 +14,11 @@ type Props = {
   recipes: Recipe[];
   recipesInfo: RecipesInfo;
   addedItemIds: Set<IngredientId>;
+  selectedItemIds: Set<IngredientId>;
 };
 
 const Recipes: React.FC<Props> = memo(
-  ({ recipes, recipesInfo, addedItemIds }) => {
+  ({ recipes, recipesInfo, addedItemIds, selectedItemIds }) => {
     return (
       <Swiper
         className='mySwiper'
@@ -33,6 +34,7 @@ const Recipes: React.FC<Props> = memo(
                 recipe={recipe}
                 recipeInfo={recipesInfo[recipe.id]}
                 addedItemIds={addedItemIds}
+                selectedItemIds={selectedItemIds}
               />
             </SwiperSlide>
           );

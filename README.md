@@ -57,3 +57,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   ただし，次のような warning が出始めている
   `React Hook useEffect has a missing dependency: 'unselectedPreshopIds'. Either include it or remove the dependency array. You can also do a functional update 'setUnselectedPreshopIds(u => ...)' if you only need 'unselectedPreshopIds' in the 'setUnselectedPreshopIds' call react-hooks/exhaustive-deps`
   →
+- ~~Recipe 検索後，ユーザが持っている材料を削除しても，Recipe Card の材料表示に反映されない~~
+  → (June4, 2021)
