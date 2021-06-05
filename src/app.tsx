@@ -25,15 +25,6 @@ function App({ spoonacular }: Props): React.ReactElement {
     });
   }, []);
 
-  const removeItem: RemoveItem = useCallback((item: Ingredient) => {
-    setAddedItems((prevState) => {
-      const newState = { ...prevState };
-      delete newState[item.id];
-      return newState;
-    });
-    selectedItemIds.has(item.id) && selectItem(item);
-  }, []);
-
   const selectItem: SelectItem = useCallback((item: Ingredient) => {
     setSelectedItemIds((prevState) => {
       const newState = new Set<IngredientId>(prevState);
@@ -46,6 +37,18 @@ function App({ spoonacular }: Props): React.ReactElement {
       return newState;
     });
   }, []);
+
+  const removeItem: RemoveItem = useCallback(
+    (item: Ingredient) => {
+      setAddedItems((prevState) => {
+        const newState = { ...prevState };
+        delete newState[item.id];
+        return newState;
+      });
+      selectedItemIds.has(item.id) && selectItem(item);
+    },
+    [selectItem]
+  );
 
   const searchRecipes = () => {
     if (selectedItemIds.size === 0) {
