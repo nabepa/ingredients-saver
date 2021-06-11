@@ -26,8 +26,6 @@ function App({ spoonacular }: Props): React.ReactElement {
   }, []);
 
   const selectItem: SelectItem = useCallback((item: Ingredient) => {
-    console.log('select item');
-
     setSelectedItemIds((prevState) => {
       const newState = new Set<IngredientId>(prevState);
       if (newState.has(item.id)) {
