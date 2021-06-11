@@ -26,6 +26,8 @@ function App({ spoonacular }: Props): React.ReactElement {
   }, []);
 
   const selectItem: SelectItem = useCallback((item: Ingredient) => {
+    console.log('select item');
+
     setSelectedItemIds((prevState) => {
       const newState = new Set<IngredientId>(prevState);
       if (newState.has(item.id)) {
@@ -38,17 +40,19 @@ function App({ spoonacular }: Props): React.ReactElement {
     });
   }, []);
 
-  const removeItem: RemoveItem = useCallback(
-    (item: Ingredient) => {
-      setAddedItems((prevState) => {
-        const newState = { ...prevState };
-        delete newState[item.id];
-        return newState;
-      });
-      selectedItemIds.has(item.id) && selectItem(item);
-    },
-    [selectItem, selectedItemIds]
-  );
+  const removeItem: RemoveItem = useCallback((item: Ingredient) => {
+    setAddedItems((prevState) => {
+      const newState = { ...prevState };
+      delete newState[item.id];
+      return newState;
+    });
+
+    setSelectedItemIds((prevState) => {
+      const newState = new Set<IngredientId>(prevState);
+      newState.delete(item.id);
+      return newState;
+    });
+  }, []);
 
   const searchRecipes = () => {
     if (selectedItemIds.size === 0) {

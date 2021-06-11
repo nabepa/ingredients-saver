@@ -1,5 +1,5 @@
 import styles from './item.module.css';
-import React, { memo } from 'react';
+import React, { memo, SyntheticEvent } from 'react';
 
 type Props = {
   key: string | number;
@@ -15,7 +15,8 @@ const Item: React.FC<Props> = memo(
     handdleClick && handdleClick(item);
   };
   
-  const handdleRemove = () => {
+  const handdleRemove = (event:SyntheticEvent) => {
+    event.stopPropagation();
     removeItem && removeItem(item);
   }
 
@@ -26,7 +27,7 @@ const Item: React.FC<Props> = memo(
     >
       {
         itemState && 
-          <i className="material-icons" onClick={handdleRemove}>
+          <i className={`${styles.icon} material-icons`} onClick={handdleRemove}>
             {getIcons(itemState)}
           </i>
       }
