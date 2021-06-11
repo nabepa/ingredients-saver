@@ -47,7 +47,7 @@ function App({ spoonacular }: Props): React.ReactElement {
       });
       selectedItemIds.has(item.id) && selectItem(item);
     },
-    [selectItem]
+    [selectItem, selectedItemIds]
   );
 
   const searchRecipes = () => {
