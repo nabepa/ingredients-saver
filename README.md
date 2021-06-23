@@ -18,15 +18,19 @@ Check below if you want to know how to use!
 ## 使い方
 
 1. 買い物した食材を My list に追加
+   </br>
    <img src="public/images/step1.png" height="300">
    </br>
 2. My list から消費したい食材を選択して，レシピーを検索
+   </br>
    <img src="public/images/step2.png" height="300">
    </br>
 3. レシピーを選択して，材料を確認(レシピの詳細はリンクで確認)
+   </br>
    <img src="public/images/step3.png" height="300">
    </br>
 4. 使い切った材料は My list から削除
+   </br>
    <img src="public/images/step4.png" height="300">
 
 ## 今後目標とする機能
