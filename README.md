@@ -19,10 +19,13 @@ Check below if you want to know how to use!
 
 1. 買い物した食材を My list に追加
    <img src="public/images/step1.png" height="300">
+   </br>
 2. My list から消費したい食材を選択して，レシピーを検索
    <img src="public/images/step2.png" height="300">
+   </br>
 3. レシピーを選択して，材料を確認(レシピの詳細はリンクで確認)
    <img src="public/images/step3.png" height="300">
+   </br>
 4. 使い切った材料は My list から削除
    <img src="public/images/step4.png" height="300">
 
@@ -44,13 +47,13 @@ Check below if you want to know how to use!
 
 # 📚 使用ライブラリとリソース， API
 
-[axios](https://github.com/axios/axios): REST API 使用
+[axios](https://github.com/axios/axios): HTTP 通信
 
 [spooncular](https://spoonacular.com/food-api): レシピーの API
 
 [swiper](https://swiperjs.com/): レシピーの slider 表示
 
-[google fonts](https://fonts.google.com/icons): 各種アイコ n
+[google fonts](https://fonts.google.com/icons): 各種アイコ
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
