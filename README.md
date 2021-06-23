@@ -3,25 +3,32 @@ You can try this app, click below badge!
 <a href="https://jovial-elion-1df897.netlify.app/
 " target="_blank">![Netlify Status](https://api.netlify.com/api/v1/badges/aea01573-e082-44b4-8617-12e71bf71494/deploy-status)</a>
 
+Check below if you want to know how to use!
+
+<img src="public/images/main.png" height="450">
+
 # 🚀 開発背景
 
-- コロナで自宅で料理する機会が増えたが，賞味期限内に消費できず捨ててしまうことが多くなった 🙊
-- 持っている材料で作れるレシピーをおすすめしてもらったら，捨てる材料を減らせると思う ✨
-- おすすめのレシピーで持っていない材料を教えてもらって買い物の時間も減らしたい ⏱
+- コロナ渦で自宅で料理する機会が増えたが，食材を賞味期限内に消費できず捨ててしまうことが多くなった 🙊
+- 早く消費したい食材から作れるレシピーを検索して，食材を使い切ろう ✨
+- 検索したレシピーで持っていない食材を教えてもらうことで買い物の時間も減らす ⏱
 
 # ⭐️ 機能
 
-## 必須機能
+## 使い方
 
-![inApp](public/images/main.png)
+1. 買い物した食材を My list に追加
+   <img src="public/images/step1.png" height="300">
+2. My list から消費したい食材を選択して，レシピーを検索
+   <img src="public/images/step2.png" height="300">
+3. レシピーを選択して，材料を確認(レシピの詳細はリンクで確認)
+   <img src="public/images/step3.png" height="300">
+4. 使い切った材料は My list から削除
+   <img src="public/images/step4.png" height="300">
 
-- 持っている材料を追加/削除
-- 洗濯した材料で作れるレシピーのおすすめ
-- レシピーに必要で，持ってない材料を教えてくれる
-- レシピーの表示
+## 今後目標とする機能
 
-## 追加したい機能
-
+- 条件付き検索(ex. 持っている材料のみで作れるレシピー，選択した材料を全て使うレシピーのみ)
 - 材料の消費期限設定とお知らせ
 
 # 🦄 使用技術とツール
@@ -32,7 +39,6 @@ You can try this app, click below badge!
     <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white"/>&nbsp;&nbsp;
     <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=black"/>&nbsp;&nbsp;
     <img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=flat&logo=PostCSS&logoColor=white"/>&nbsp;&nbsp;
-    <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=white"/>&nbsp;&nbsp;
     <img src="https://img.shields.io/badge/Yarn-2C8EBB?style=flat&logo=Yarn&logoColor=white"/>&nbsp;&nbsp;
  </p>
 
@@ -48,7 +54,7 @@ You can try this app, click below badge!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# 🐛 改善が必要な部分
+# 🐛 改善予定
 
 - ~~Recipe Card が無限に re-render されている~~
   → useEffect 内で unselectedPreshopIds という state を更新し，dependency にも設定していた事で無限ループしていた
@@ -61,3 +67,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   → チェック・追加は反映できるように修正(June4, 2021)
   ~~ただし，削除した材料がチェックされた材料として残っている~~
   → Item component の child である削除のアイコンをクリックすると，イベントが Item component まで bubbling してくるのが原因だった(そこで，削除と同時にチェエクされてた)(June11, 2021)
+- 検索した材料をキーボードの方向キーと enter キーで選択できるように
