@@ -51,7 +51,7 @@ Check below if you want to know how to use!
 
 # 📚 使用ライブラリとリソース， API
 
-[axios](https://github.com/axios/axios): HTTP 通信
+[axios](https://github.com/axios/axios): レシピーデータ fetch
 
 [spooncular](https://spoonacular.com/food-api): レシピーの API
 
@@ -65,11 +65,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - ~~Recipe Card が無限に re-render されている~~
   → useEffect 内で unselectedPreshopIds という state を更新し，dependency にも設定していた事で無限ループしていた
-  useEffect に setState を利用する際，Dependancy の設定を間違うと無限に re-rendering してしまうので注意
-  (June4, 2021)
-  ただし，次のような warning が出始めている
-  `React Hook useEffect has a missing dependency: 'unselectedPreshopIds'. Either include it or remove the dependency array. You can also do a functional update 'setUnselectedPreshopIds(u => ...)' if you only need 'unselectedPreshopIds' in the 'setUnselectedPreshopIds' call react-hooks/exhaustive-deps`
-  →
+  useEffect に setState を利用する際，Dependancy の設定を間違うと無限に re-rendering してしまうので注意(June4, 2021)
 - ~~Recipe 検索後，ユーザが持っている材料のチェック・追加・削除が Recipe Card の方に反映されない~~
   → チェック・追加は反映できるように修正(June4, 2021)
   ~~ただし，削除した材料がチェックされた材料として残っている~~
